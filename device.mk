@@ -70,6 +70,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
+# Axion OS Custom Flags
+TARGET_DISABLE_EPPE := true
+TARGET_INCLUDE_AXFX := true
+AXION_CAMERA_REAR_INFO := 50,48,2
+AXION_CAMERA_FRONT_INFO := 16
+AXION_MAINTAINER := Tony01
+AXION_PROCESSOR := Qualcomm®_Snapdragon™_888
+TARGET_DISABLES_LIBPERF ?= false
+TARGET_INCLUDES_LOS_PREBUILTS := false
+
+# inherit product configs
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8350-common/common.mk)
 
