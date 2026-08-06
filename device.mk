@@ -72,13 +72,24 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Axion OS Custom Flags
 TARGET_DISABLE_EPPE := true
-TARGET_INCLUDE_AXFX := true
 AXION_CAMERA_REAR_INFO := 50,48,2
 AXION_CAMERA_FRONT_INFO := 16
 AXION_MAINTAINER := Tony01
 AXION_PROCESSOR := Qualcomm®_Snapdragon™_888
-TARGET_DISABLES_LIBPERF ?= false
-TARGET_INCLUDES_LOS_PREBUILTS := false
+TARGET_INCLUDES_LOS_PREBUILTS := true
+TARGET_INCLUDE_PARTNER_SETUP := true
+TARGET_INCLUDE_GOOGLE_TELECOMM := false
+
+ifeq ($(TARGET_BUILD_VARIANT),eng)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.adb.secure=0 \
+    ro.adb.secure.mandatory=0 \
+    persist.sys.usb.config=adb \
+    ro.debuggable=1 \
+    ro.secure=0 \
+    ro.force.debuggable=1 \
+    persist.sys.ax_debug_enabled=1
+endif
 
 # inherit product configs
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
