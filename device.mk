@@ -85,9 +85,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.adb.secure.mandatory=0 \
     persist.sys.usb.config=adb \
-    ro.debuggable=1 \
-    ro.secure=0 \
-    ro.force.debuggable=1 \
     persist.sys.ax_debug_enabled=1
 endif
 
